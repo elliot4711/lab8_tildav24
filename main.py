@@ -36,7 +36,11 @@ def isatom(que):
                     raise Syntaxfel("Något är fel")
             
     else:
-        raise Syntaxfel("Saknad stor bokstav vid radslutet")
+        word = x
+        while not que.isEmpty():
+            l = que.dequeue()
+            word += l
+        raise Syntaxfel(f"Saknad stor bokstav vid radslutet {word}")
 
 
 def isbigletter(value):
@@ -60,13 +64,23 @@ def isnum(que):
     if x:
         return True
     elif y == "0":
-        raise Syntaxfel("För litet tal vid radslutet")
-    elif y == "1":
-        number = re.search(r'\d', z) #Skapar problem
-        if number:
-            pass
+        word = ""
+        if not que.isEmpty():
+            while not que.isEmpty():
+                l = que.dequeue()
+                word += l
+            raise Syntaxfel(f"För litet tal vid radslutet {word}")
         else:
             raise Syntaxfel("För litet tal vid radslutet")
+    elif y == "1":
+        if z == None:
+            raise Syntaxfel("För litet tal vid radslutet")
+        else:
+            number = re.search(r'\d', z) #Skapar problem
+            if number:
+                pass
+            else:
+                raise Syntaxfel("För litet tal vid radslutet")
     else:
         print("fel")
 
