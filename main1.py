@@ -91,11 +91,16 @@ class Syntaxfel(Exception):
 
     pass
 
+
 take_input = True
 while take_input == True:
     molecule = input("")
     if molecule == ("#"):
         take_input = False
     else:
-        ismolecule(molecule)
+        try:
+            returnvalue = ismolecule(molecule)
+        except Syntaxfel as err:
+            returnvalue = str(err.args[0])
+            print(returnvalue)
 
