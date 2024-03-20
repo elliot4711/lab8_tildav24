@@ -103,4 +103,3 @@ while take_input == True:
         except Syntaxfel as err:
             returnvalue = str(err.args[0])
             print(returnvalue)
-
