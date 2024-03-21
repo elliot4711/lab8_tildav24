@@ -128,6 +128,12 @@ class LinkedQ:
             count+=1
     
     def peek(self):
+        """
+        Function that looks at the next value without dequeuing it
+        Parameters: nothing
+        Returns: value on next pointer
+        """
+
         try:
             x = self.__first.next.get_elements()
             return x

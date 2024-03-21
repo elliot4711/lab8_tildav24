@@ -2,6 +2,13 @@ from linkedQfile import LinkedQ
 import re
 
 def ismolecule(molecule):
+    """ 
+    Function for testing if input follows syntax for a molecule
+    Parameters: text that could be a molecule
+    Returns: nothing
+    """
+
+
     x = re.search(r'\d', molecule)
     que = LinkedQ()
     for letter in molecule:
@@ -18,6 +25,12 @@ def ismolecule(molecule):
     
 
 def isatom(que):
+    """ 
+    Function for testing if input follows syntax for an atom
+    Parameters: linkedQ object containing all letters and numbers in the atom name
+    Returns: linkedQ object with only numbers remaining
+    """
+
     y = que.peek()
     x = que.dequeue()
     if isbigletter(x):
@@ -44,6 +57,12 @@ def isatom(que):
 
 
 def isbigletter(value):
+    """ 
+    Function for testing if a value is a capital letter
+    Parameters: value to check
+    Returns: True or False
+    """
+
     x = re.search("[A-Z]", value)
     if x:
         return True
@@ -51,6 +70,12 @@ def isbigletter(value):
         return False 
 
 def issmallletter(value):
+    """ 
+    Function for testing if a value is a lowercase letter
+    Parameters: value to check
+    Returns: True or False
+    """
+
     x = re.search("[a-z]", value)
     if x:
         return True
@@ -58,6 +83,12 @@ def issmallletter(value):
         return False      
 
 def isnum(que):
+    """ 
+    Function for testing if input follows syntax for a number higher or equal to 2
+    Parameters: linkedQ object containing all numbers in the atom name
+    Returns: True if number is higher or equal to 2
+    """
+
     z = que.peek()
     y = que.dequeue()
     x = re.search("[2-9]", y)
@@ -76,7 +107,7 @@ def isnum(que):
         if z == None:
             raise Syntaxfel("För litet tal vid radslutet")
         else:
-            number = re.search(r'\d', z) #Skapar problem
+            number = re.search(r'\d', z)
             if number:
                 pass
             else:
